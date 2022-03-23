@@ -19,4 +19,5 @@ echo "*/5 * * * * root cd /opt/homelab; /usr/bin/python3 /opt/homelab/check-ngro
 ```
 
 When there are live SSH sessions via the ngrok tunnel, the LED will be lit.  
-When the button is pressed, all SSH sessions via the ngrok tunnel are disconnected.
+When the button is pressed, all SSH sessions via the ngrok tunnel are disconnected.  
+The cron job sends an email with the tunnel details whenever it changes, using mailgun. Signup for a free mailgun account (https://www.mailgun.com).  
