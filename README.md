@@ -22,3 +22,18 @@ echo "*/5 * * * * root cd /opt/homelab; /usr/bin/python3 /opt/homelab/check-ngro
 When there are live SSH sessions via the ngrok tunnel, the LED will be lit.  
 When the button is pressed, all SSH sessions via the ngrok tunnel are disconnected.  
 The cron job sends an email with the tunnel details whenever it changes, using mailgun. Signup for a free mailgun account (https://www.mailgun.com).  
+
+##
+One thing I do on my bastion hosts (work and personal) is setup a .ssh/config file and have an alias print the hosts when I connect
+
+Add this line to your `.bashrc`  
+`alias listssh='grep "Host " ~/.ssh/config | sed "s/Host/ssh/g"'`  
+
+Add this line to your `.profile`  
+`listssh`
+
+Now when you connect, you are presented with a list of the hosts in the config file:  
+`ssh pheasant`  
+`ssh falcon`  
+`ssh sparrow`  
+`etc`  
