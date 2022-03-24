@@ -9,7 +9,8 @@ Connect a button to P1
 Add the Python scripts to /opt/homelab and copy the .service files to /etc/systemd/system/  
 
 Then do the following:  
-```systemctl daemon-reload
+```
+systemctl daemon-reload
 systemctl enable ngrok
 systemctl start ngrok
 systemctl enable ssh-monitor
