@@ -1,4 +1,6 @@
-import requests, hashlib
+import requests
+import hashlib
+
 
 # define mailgun function
 def send_simple_message(message):
@@ -9,6 +11,7 @@ def send_simple_message(message):
               "to": ["EMAIL ADDRESS"],
               "subject": "NGROK SSH Tunnel Update",
               "text": message})
+
 
 # get the tunnel information
 response = requests.get('http://localhost:4040/api/tunnels')
@@ -24,12 +27,12 @@ last = hashlib.md5(data.encode())
 current = hashlib.md5(message.encode())
 
 if current.hexdigest() != last.hexdigest():
-  # write the new data
-  f = open("ngrok.last", "w")
-  f.write(message)
-  f.close()
-  # tidy up the data
-  message = message.replace('tcp://', 'Host: ')
-  message = message.replace('.io:', '.io Port: ')
-  # send an email via mailgun
-  send_simple_message(message)
+    # write the new data
+    f = open("ngrok.last", "w")
+    f.write(message)
+    f.close()
+    # tidy up the data
+    message = message.replace('tcp://', 'Host: ')
+    message = message.replace('.io:', '.io Port: ')
+    # send an email via mailgun
+    send_simple_message(message)
